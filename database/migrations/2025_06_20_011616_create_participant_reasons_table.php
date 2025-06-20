@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('participant_reasons', function (Blueprint $table) {
+        Schema::create('participants_reasons', function (Blueprint $table) {
             $table->id();
-            $table->uuid('participant_id');
+            $table->uuid('participants_id');
             $table->string('status')->nullable();
             $table->text('catatan')->nullable();
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('participant_reasons');
+        Schema::dropIfExists('participants_reasons');
     }
 };

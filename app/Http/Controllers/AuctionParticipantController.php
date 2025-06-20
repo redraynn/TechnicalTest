@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VerifyParticipantRequest;
-use App\Services\ParticipantService;
+use Illuminate\Http\Request;
 
 class AuctionParticipantController extends Controller
 {
-    public function __construct(
-        private ParticipantService $service
-    ) {}
-
-    public function verify(VerifyParticipantRequest $request)
+    public function verify(Request $request)
     {
-        $this->service->verifyParticipant(
-            $request->peserta,
-            $request->validated()
-        );
+        // Handle the verification logic here
+        $validatedData = $request->validate([
+            'peserta' => 'required|uuid|exists:participants,id',
+            'status' => 'required|in:TERIMA,TOLAK',
+            'catatan' => 'nullable|string',
+            'alasan' => 'nullable|string|required_if:status,TOLAK',
+        ]);
+
+        // Process the verification
+        // ...
 
         return response()->json([
             'status_code' => 200,
