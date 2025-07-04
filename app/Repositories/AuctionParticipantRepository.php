@@ -11,7 +11,7 @@ class AuctionParticipantRepository
 
     public function findById(string $id): ?Participant
     {
-        return $this->model->with('alasan')->find($id);
+        return $this->model->with('reasons')->find($id);
     }
 
     public function updateVerification(string $id, array $data): Participant

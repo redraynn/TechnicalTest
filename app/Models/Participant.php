@@ -9,7 +9,7 @@ class Participant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'status', 'pin'];
+    protected $fillable = ['id', 'nama', 'pin'];
     protected $keyType = 'string';
     public $incrementing = false;
 

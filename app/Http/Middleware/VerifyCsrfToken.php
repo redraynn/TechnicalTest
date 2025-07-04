@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 class VerifyCsrfToken extends Middleware
 {
     protected $except = [
-        'api/verifikasi-peserta-lelang',
+        'api/auction/participants/verify',
         'api/*'
     ];
 }

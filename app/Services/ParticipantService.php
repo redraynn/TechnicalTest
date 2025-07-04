@@ -14,11 +14,11 @@ class ParticipantService
     public function verifyParticipant(string $id, array $data): self
     {
         DB::transaction(function () use ($id, $data) {
-            $status = $data['status'] === 'TERIMA' ? 'BIDDING' : 'DITOLAK';
+            $status = $data['status'] === 'TERIMA' ? 'BIDDING' : 'TOLAK';
             
             $this->repository->updateVerification($id, ['status' => $status]);
 
-            if ($status === 'DITOLAK') {
+            if ($status === 'TOLAK') {
                 $this->repository->createReason($id, $data);
             } else {
                 $this->repository->updateVerification($id, [
